@@ -119,7 +119,7 @@ $success = Globals::get_param('success', $_GET);
 					}
 					else
 					{
-						echo('<div style="text-align:center;width:100%;"><div style="width:60%;text-align:left;margin-left: auto;margin-right: auto;"><p><h3>If you cannot find the answers you seek...</h3></p><p>Send a message to Cameron and Andrew, the creators of ComfyPage.</p></div></div>');
+						echo('An error occurred.');
 					}
 				?>
 			    <form method="post" style="padding:o;margin:0;">

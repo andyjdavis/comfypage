@@ -372,7 +372,6 @@ END;
 		}
 		return count($this->errors) == 0;
 	}
-	//TODO Verify this with Cam. Added by Andrew.
 	public function get_input_form()
 	{
 		 $s = <<<END

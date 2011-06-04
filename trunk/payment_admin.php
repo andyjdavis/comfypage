@@ -16,8 +16,6 @@
 
 /**
  *
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -33,8 +31,6 @@ define('SAVE', 'save');
 
 Globals::dont_cache();
 Login::logged_in();
-//site_enabled_check();
-//track_user();
 
 $error = null;
 $success = null;
@@ -48,56 +44,54 @@ $pps_names = PaymentProcessor::get_processor_keys();
 //if saving settings of payment processor
 if(isset($_POST[SAVE]))
 {
-	//get array of payment general setting names
-	$general_settings = $gps->get_setting_names();
-	//find the key of the SELECTED_PROCESSOR setting name
-	$key = array_search(SELECTED_PROCESSOR, $general_settings);
-	//don't process the SELECTED_PROCESSOR
-	unset($general_settings[$key]);
-	//make sure both of these funcitons get called because
-	//before I had them in the if statement but the second call wasn't
-	//being made as the first call was returning false
-	//and the && statement would stop the second executing
-	$pp_ok = $chosen_processor->process_post($_POST);
-	$gp_ok = $gps->process_post($_POST, $general_settings);
+    //get array of payment general setting names
+    $general_settings = $gps->get_setting_names();
+    //find the key of the SELECTED_PROCESSOR setting name
+    $key = array_search(SELECTED_PROCESSOR, $general_settings);
+    //don't process the SELECTED_PROCESSOR
+    unset($general_settings[$key]);
+    //make sure both of these funcitons get called because
+    //before I had them in the if statement but the second call wasn't
+    //being made as the first call was returning false
+    //and the && statement would stop the second executing
+    $pp_ok = $chosen_processor->process_post($_POST);
+    $gp_ok = $gps->process_post($_POST, $general_settings);
     if($pp_ok && $gp_ok)
     {
         $success = 'Options saved';
-	}
-	else
-	{
-	    $error = $chosen_processor->get_error_message();
-	    $error = Message::format_errors($error, $gps->get_error_message());
-		$error = "Not saved<br />$error<br /><a href=payment_admin.php>Discard changes</a>";
-	}
+    }
+    else
+    {
+        $error = $chosen_processor->get_error_message();
+        $error = Message::format_errors($error, $gps->get_error_message());
+        $error = "Not saved<br />$error<br /><a href=payment_admin.php>Discard changes</a>";
+    }
 }
 else if($new_processor != null)
 {
     if($gps->process_post($_GET, array(SELECTED_PROCESSOR)))
     {
-		$chosen_processor_name = $new_processor;
-		$chosen_processor = Load::payment_processor($chosen_processor_name);
-		if($chosen_processor->is_valid(true) == false || $gps->is_valid(true) == false)
-		{
-			$error = "Complete the configuration";
-			$error = Message::format_errors($error, $gps->get_error_message());
-			$error = Message::format_errors($error, $chosen_processor->get_error_message());
-		}
-		$success = 'Payment processor changed';
-		//track_user('Payment processor changed');
-	}
-	else //else keep the old one
-	{
-		$new_processor_error = $gps->get_error(SELECTED_PROCESSOR);
-		$error .= "New settings have not been saved<br />$new_processor_error";
-		//track_user('Failed to save payment processor choice');
-	}
+        $chosen_processor_name = $new_processor;
+        $chosen_processor = Load::payment_processor($chosen_processor_name);
+        if($chosen_processor->is_valid(true) == false || $gps->is_valid(true) == false)
+        {
+            $error = "Complete the configuration";
+            $error = Message::format_errors($error, $gps->get_error_message());
+            $error = Message::format_errors($error, $chosen_processor->get_error_message());
+        }
+        $success = 'Payment processor changed';
+    }
+    else //else keep the old one
+    {
+        $new_processor_error = $gps->get_error(SELECTED_PROCESSOR);
+        $error .= "New settings have not been saved<br />$new_processor_error";
+    }
 }
 else if($chosen_processor->is_valid(true) == false || $gps->is_valid(true) == false)
 {
-	$error = "Complete the configuration";
-	$error = Message::format_errors($error, $gps->get_error_message());
-	$error = Message::format_errors($error, $chosen_processor->get_error_message());
+    $error = "Complete the configuration";
+    $error = Message::format_errors($error, $gps->get_error_message());
+    $error = Message::format_errors($error, $chosen_processor->get_error_message());
 }
 function get_processor_row($name, $description, $is_selected_processor, $paid_for = true)
 {

@@ -15,9 +15,6 @@
 // along with ComfyPage.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * ComfyPage frontpage
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -58,22 +55,22 @@ if($content_id)
 $content_id = Globals::get_param(CONTENT_ID_URL_PARAM, $_GET, $content_id);
 if($content_id)
 {
-	$ps = Load::page_store();
-	if($ps->store_item_exists($content_id))
-	{
-		//display the editor
-	    $page = get_content_edit_page($content_id);
-		echo($page);
-		exit();
-	}
-	else
-	{
-	    $error = 'Non-existent content specified';
-	}
+    $ps = Load::page_store();
+    if($ps->store_item_exists($content_id))
+    {
+        //display the editor
+        $page = get_content_edit_page($content_id);
+        echo($page);
+        exit();
+    }
+    else
+    {
+        $error = 'Non-existent content specified';
+    }
 }
 if($content_id == null)
 {
-	$error = 'No content was identified';
+    $error = 'No content was identified';
 }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">

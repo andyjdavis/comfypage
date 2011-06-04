@@ -15,9 +15,6 @@
 // along with ComfyPage.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * ComfyPage frontpage
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -31,10 +28,7 @@ include_once('common/menu.php');
 
 Globals::dont_cache();
 Login::logged_in();
-//site_enabled_check();
-//track_user();
 
-//require_once('common/permissions.php');
 $permissions = Load::permission_settings();
 $permissions->check_permission(STYLE_ALLOWED, false);
 

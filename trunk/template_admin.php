@@ -17,11 +17,9 @@
 /**
  *
  *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-//TODO rip out anything to do with buying templates. No one does that any more. It is so passe.
 if(!isset($_SESSION)) {
     session_start();
 }

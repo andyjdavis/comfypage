@@ -15,9 +15,6 @@
 // along with ComfyPage.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * ComfyPage frontpage
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,15 +23,12 @@ if(!isset($_SESSION)) {
 }
 
 require_once('common/utils/Globals.php');
-//require_once('common/general_settings.php');
 require_once('common/contentServer/template_control.php');
 require_once('common/menu.php');
 
 Globals::dont_cache();
 Login::logged_in();
-//track_user(null, false);
 
-//require_once('common/permissions.php');
 $permissions = Load::permission_settings();
 $permissions->check_permission(TEMPLATE_ALLOWED, false);
 
@@ -50,57 +44,53 @@ $gs = Load::general_settings();
 
 if($_GET)
 {
-	$encLogoPath = Globals::get_param('logoPath', $_GET);
-	$content_id = Globals::get_param('content_id', $_GET);
-	$revert = Globals::get_param('revert', $_GET);
+    $encLogoPath = Globals::get_param('logoPath', $_GET);
+    $content_id = Globals::get_param('content_id', $_GET);
+    $revert = Globals::get_param('revert', $_GET);
 
-	//require_once('common/portal.php');
-
-	if(!empty($revert))
-	{
-		set_default_feature_image($gs->get(TEMPLATE_IN_USE));
-		$portal = Load::portal_settings();
-		//if($portal->get_use_my_template())
-		if($portal->get(USE_MY_TEMPLATE))
-		{
-			$portal->apply_my_settings_to_portal();
-		}
-		$submitDisplay = 'inline';
-	}
-	if(!empty($encLogoPath))
-	{
-		$decLogoPath = urldecode($encLogoPath);
-		//$logoImgTag = "<img src=\"$decLogoPath\" />";
-		$gs->set(FEATURE_IMAGE, $decLogoPath);
-		$portal = Load::portal_settings();
-		if($portal->get(USE_MY_TEMPLATE))
-		{
-			$portal->apply_my_settings_to_portal();
-		}
-		//redirect back to wherever they came from
-		$url = null;
-		if(!empty($content_id))
-		{
-			$url = 'Location:index.php?content_id='.$content_id;
-		}
-		else
-		{
-			$url = 'Location:index.php';
-		}
-		header($url);
-	}
+    if(!empty($revert))
+    {
+        set_default_feature_image($gs->get(TEMPLATE_IN_USE));
+        $portal = Load::portal_settings();
+        if($portal->get(USE_MY_TEMPLATE))
+        {
+            $portal->apply_my_settings_to_portal();
+        }
+        $submitDisplay = 'inline';
+    }
+    if(!empty($encLogoPath))
+    {
+        $decLogoPath = urldecode($encLogoPath);
+        $gs->set(FEATURE_IMAGE, $decLogoPath);
+        $portal = Load::portal_settings();
+        if($portal->get(USE_MY_TEMPLATE))
+        {
+            $portal->apply_my_settings_to_portal();
+        }
+        //redirect back to wherever they came from
+        $url = null;
+        if(!empty($content_id))
+        {
+            $url = 'Location:index.php?content_id='.$content_id;
+        }
+        else
+        {
+            $url = 'Location:index.php';
+        }
+        header($url);
+    }
 }
 
 //if the havent set a new logo get the old one
 if(empty($encLogoPath))
 {
-	$img_path = $gs->get(FEATURE_IMAGE);
+    $img_path = $gs->get(FEATURE_IMAGE);
 
-	if(!empty($img_path))
-	{
-		$logoImgTag = "<img id=imgFeature src=\"$img_path\" alt=\"feature image\" />";
-		$encLogoPath = urlencode($img_path);
-	}
+    if(!empty($img_path))
+    {
+        $logoImgTag = "<img id=imgFeature src=\"$img_path\" alt=\"feature image\" />";
+        $encLogoPath = urlencode($img_path);
+    }
 }
 
 ?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">

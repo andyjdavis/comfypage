@@ -16,8 +16,6 @@
 
 /**
  * Produces the site RSS feed
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

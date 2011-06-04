@@ -15,9 +15,6 @@
 // along with ComfyPage.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * ComfyPage frontpage
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,14 +23,10 @@ if(!isset($_SESSION)) {
 }
 
 require_once('common/utils/Globals.php');
-//require_once('common/contentServer/doodad_functions.php');
-//require_once('common/credit.php');
 require_once('common/menu.php');
 
 Globals::dont_cache();
 Login::logged_in();
-//site_enabled_check();
-//track_user();
 
 $error = null;
 $success = null;
@@ -43,15 +36,15 @@ $success = Globals::get_param('success', $_GET);
 
 function GetFunctionTableRow($name, $desc, $config_required)
 {
-	$link_text = 'Configure and test';
-	if($config_required == false) $link_text = 'Test';
-	$link = "<a href='function.php?" . FUNCTION_GET_PARAM . "=$name'>$link_text</a>";
-	return get_generic_row($name, $desc, $link);
+    $link_text = 'Configure and test';
+    if($config_required == false) $link_text = 'Test';
+    $link = "<a href='function.php?" . FUNCTION_GET_PARAM . "=$name'>$link_text</a>";
+    return get_generic_row($name, $desc, $link);
 }
 function get_generic_row($title, $desc, $link)
 {
-	$rand = rand();
-	return <<<END
+    $rand = rand();
+    return <<<END
 <tr>
 <td width=200 nowrap valign=top style="font-weight:bold;text-align:center;"><span id=t$rand class=translate_me>$title</span></td>
 <td width=300 valign=top style="text-align:left;padding-bottom:20px;"><span id=d$rand class=translate_me>$desc</span></td>

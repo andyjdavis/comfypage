@@ -17,7 +17,6 @@
 /**
  * Member's area (password protected pages) log out page
  *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,7 +25,6 @@ if(!isset($_SESSION)) {
 }
 require_once('common/utils/Globals.php');
 Globals::dont_cache();
-//track_user('Member logging out');
 $members = Load::member_settings();
 $members->log_out();
 Globals::redirect('http://' . Load::general_settings(NEW_SITE_ID) . '/');

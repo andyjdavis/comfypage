@@ -15,9 +15,8 @@
 // along with ComfyPage.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * SEO assistance - try to provide some useful data about search engines
  *
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -31,7 +30,6 @@ require_once('common/contentServer/content_page.php');
 require_once('common/controllers/controller_seo.php');
 
 Globals::dont_cache();
-//Login::logged_in();
 
 define('CHECK_RANK_PARAM','cr');
 

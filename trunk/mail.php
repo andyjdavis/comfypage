@@ -15,9 +15,6 @@
 // along with ComfyPage.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * 
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -44,9 +41,6 @@ $message = null;
 $subject = null;
 $only_one_list = false;
 
-//require_once('common/paypal/paypal_functions.php');
-//$buy_list_button = get_purchase_mailing_list_button();
-
 $selected_list = Globals::get_param('list', $_GET);
 //if POST list is set use that otherwise stick with GET list
 $selected_list = Globals::get_param('list', $_POST, $selected_list);
@@ -54,48 +48,48 @@ $selected_list = Globals::get_param('list', $_POST, $selected_list);
 //if no list selected and there is only one list
 if(count($mailing_lists) == 1)
 {
-	//auto select the single list
-	$selected_list = $mailing_lists[0];
-	$only_one_list = true;
+    //auto select the single list
+    $selected_list = $mailing_lists[0];
+    $only_one_list = true;
 }
 
 if($selected_list != null)
 {
-	if(Addon::exists($selected_list))
-	{
-	    $mailingDoodad = Load::addon($selected_list);
-	    //$list_settings = get_doodad_settings($selected_list);
-	    $subject = $mailingDoodad->get(EMAIL_SUBJECT);
-	    $from_email = $mailingDoodad->get(FROM_EMAIL_ADDRESS);
-	    $message = $mailingDoodad->get(MESSAGE_TRAILER);
-	    if(empty($message) == false) $message = "\n\n\n$message";
-	    $address_list = $mailingDoodad->get_addresses_from_single_string($mailingDoodad->get(LIST_OF_EMAILS));
-	    //$validation_errors = $mailingDoodad->validate_doodad_settings($list_settings);
-	    $properly_configured = empty($validation_errors);
-	    if($properly_configured == false)
-	    {
-		$error = <<<END
+    if(Addon::exists($selected_list))
+    {
+        $mailingDoodad = Load::addon($selected_list);
+        //$list_settings = get_doodad_settings($selected_list);
+        $subject = $mailingDoodad->get(EMAIL_SUBJECT);
+        $from_email = $mailingDoodad->get(FROM_EMAIL_ADDRESS);
+        $message = $mailingDoodad->get(MESSAGE_TRAILER);
+        if(empty($message) == false) $message = "\n\n\n$message";
+        $address_list = $mailingDoodad->get_addresses_from_single_string($mailingDoodad->get(LIST_OF_EMAILS));
+        //$validation_errors = $mailingDoodad->validate_doodad_settings($list_settings);
+        $properly_configured = empty($validation_errors);
+        if($properly_configured == false)
+        {
+            $error = <<<END
 <p>Selected mailing list is not configured</p>
 <p><a href="function.php?function=$selected_list">Configure the list</a></p>
 END;
-		if(count($mailing_lists) > 1)
-		{
-			$error .= '<p><a href=mail.php>Select another list</a></p>';
-		}
-	    }
-	}
-	else
-	{
-	    //not an allowed mailing list so reset it
-		$selected_list = null;
-	}
+            if(count($mailing_lists) > 1)
+            {
+                $error .= '<p><a href=mail.php>Select another list</a></p>';
+            }
+        }
+    }
+    else
+    {
+        //not an allowed mailing list so reset it
+        $selected_list = null;
+    }
 }
 
 if(isset($_POST['ready']))
 {
     if($mailing_list_enabled == false)
     {
-	    $error = 'You must upgrade to use the mailing list. <a href="service_levels.php">Upgrade now.</a>';
+        $error = 'You must upgrade to use the mailing list. <a href="service_levels.php">Upgrade now.</a>';
     }
     else
     {

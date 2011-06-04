@@ -17,7 +17,6 @@
 /**
  *
  *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,25 +26,21 @@ if(!isset($_SESSION)) {
 
 require_once('common/utils/Globals.php');
 require_once('common/contentServer/content_page.php');
-//require_once('common/general_settings.php');
 
 Globals::dont_cache();
 Login::logged_in();
-//site_enabled_check();
 
-//require_once('common/permissions.php');
 $permissions = Load::permission_settings();
 $permissions->check_permission(TEMPLATE_ALLOWED, false);
 
 $default_tmeplate = Load::general_settings(TEMPLATE_IN_USE);
 $template_to_show = Globals::get_param('TEMPLATE', $_GET, $default_tmeplate);
-//if(isset($_GET['TEMPLATE']))
+
 if($template_to_show != null)
 {
-	require_once('common/contentServer/template_control.php');
-	if(does_template_exist($template_to_show))
-	{
-    	//track_user('Template previewed');
+    require_once('common/contentServer/template_control.php');
+    if(does_template_exist($template_to_show))
+    {
     }
 }
 

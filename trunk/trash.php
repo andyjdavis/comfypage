@@ -17,7 +17,6 @@
 /**
  * Area that holds deleted pages
  *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -30,8 +29,6 @@ require_once('common/menu.php');
 
 Globals::dont_cache();
 Login::logged_in();
-//site_enabled_check();
-//track_user();
 
 //types of action
 define('ACTION_PARAM', 'action');

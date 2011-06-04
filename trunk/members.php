@@ -17,7 +17,6 @@
 /**
  * Manage page password protection
  *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -31,8 +30,6 @@ require_once('common/utils/Load.php');
 
 Globals::dont_cache();
 Login::logged_in();
-//site_enabled_check();
-//track_user();
 
 $error = null;
 $success = null;
@@ -42,19 +39,19 @@ $user_pages = $ps->load_users_pages();
 $index_page = $ps->load_index_page();
 
 $m = Load::member_settings();
-//$setting_names = array(MEMBERS_ONLY_PAGES);
+
 $success = $m->process_protections($_GET); //process public/private changes
 if(empty($success) == false)
 {
-	Load::award_settings()->bestow_award(PASSWORD_PROTECT_PAGE_AWARD);
+    Load::award_settings()->bestow_award(PASSWORD_PROTECT_PAGE_AWARD);
 }
 
 if($_POST)
 {
-	$setting_names = array(MEMBERS_AREA_PASSWORD);
-	$m->process_post($_POST, $setting_names);
-	$error = $m->get_error_message();
-	$success = 'Saved';
+    $setting_names = array(MEMBERS_AREA_PASSWORD);
+    $m->process_post($_POST, $setting_names);
+    $error = $m->get_error_message();
+    $success = 'Saved';
 }
 function GetPageHtmlRow($contentId, $title, $is_private = false)
 {

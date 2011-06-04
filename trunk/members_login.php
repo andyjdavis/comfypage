@@ -17,7 +17,6 @@
 /**
  * Member's area (password protected pages) login page
  *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,29 +28,25 @@ require_once('common/utils/Globals.php');
 
 Globals::dont_cache();
 Globals::self_install_checks();
-//track_user(null, false);
 
 $error = false;
 $password = Globals::get_param('password', $_POST);
 if($password != null)
 {
-	require_once('common/lib/form_spam_blocker/fsbb.php');
-	//check submission is by a human
-	if(check_hidden_tags($_POST) == false)
-	{
-		$error = 'Please try again';
-	}
-	else
-	{
-		//require_once('common/members.php');
-		//$members = new Members;
-		$members = Load::member_settings();
-		if($members->log_in($password) == false)
-		{
-			//track_user('Members Log in bad', false);
-			$error = "<p>Log in failed</p><p>Password is case sensitive</p>";
-		}
-	}
+    require_once('common/lib/form_spam_blocker/fsbb.php');
+    //check submission is by a human
+    if(check_hidden_tags($_POST) == false)
+    {
+        $error = 'Please try again';
+    }
+    else
+    {
+        $members = Load::member_settings();
+        if($members->log_in($password) == false)
+        {
+            $error = "<p>Log in failed</p><p>Password is case sensitive</p>";
+        }
+    }
 }
 ?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>

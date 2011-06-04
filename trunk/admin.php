@@ -15,9 +15,6 @@
 // along with ComfyPage.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * ComfyPage frontpage
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -41,9 +38,6 @@ $error = null;
 $success = null;
 
 $ps = Load::page_store();
-
-//$counter = Load::counter_settings();
-//$page_view_errors = $counter->check_page_views(false);
 
 $delete_id = Globals::get_param(DELETE_PAGE_URL_PARAM, $_GET);
 if($delete_id != null)

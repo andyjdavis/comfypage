@@ -16,8 +16,6 @@
 
 /**
  *
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,12 +24,7 @@ if(!isset($_SESSION)) {
 }
 
 require_once('common/utils/Globals.php');
-//require_once('common/general_settings.php');
-//require_once('common/credit.php');
 include_once('common/menu.php');
-
-//Globals::dont_cache();
-//track_user(null, false);
 
 ?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>

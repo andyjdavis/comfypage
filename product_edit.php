@@ -16,20 +16,18 @@
 
 /**
  *
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 if(!isset($_SESSION)) {
     session_start();
 }
-//require_once('common/contentServer/product_globals.php');
+
 require_once('common/utils/Globals.php');
 require_once('common/contentServer/product_page.php');
 Globals::dont_cache();
 Login::logged_in(true);
-//site_enabled_check();
+
 $product_id = Globals::get_param(PRODUCT_ID_URL_PARAM, $_POST);
 if($product_id != null)
 {

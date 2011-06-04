@@ -15,9 +15,6 @@
 // along with ComfyPage.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,30 +23,25 @@ if(!isset($_SESSION)) {
 }
 
 require_once('common/utils/Globals.php');
-//require_once('common/general_settings.php');
 require_once('common/menu.php');
 
 $gs = Load::general_settings();
 
 if($gs->operating_under_domain())
 {
-	//this page is used to go from demo to paid site
-	//so if not in demo then they don't need it
-	exit();
+    //this page is used to go from demo to paid site
+    //so if not in demo then they don't need it
+    exit();
 }
 
 Globals::dont_cache();
 Login::logged_in();
-//track_user();
 
 $error = null;
 $success = null;
 
 define('COMPLETE_DOMAIN', 'domain');
 
-/*$complete_domain = null;
-if(isset($_POST[COMPLETE_DOMAIN])) $complete_domain = $_POST[COMPLETE_DOMAIN];
-*/
 $complete_domain = Globals::get_param(COMPLETE_DOMAIN, $_POST);
 //they don't want us to reg it
 //set_affinity_registers_domain(false);
@@ -57,18 +49,17 @@ $complete_domain = Globals::get_param(COMPLETE_DOMAIN, $_POST);
 //if they entered something
 if(empty($complete_domain) == false)
 {
-	require_once('common/utils/Validate.php');
-	$error = Validate::domain($complete_domain);
-	//if no problem
-	if(empty($error))
-	{
-		//track_user('Valid domain entered');
-		Globals::redirect("register_confirm.php?domain=$complete_domain");
-	}
+    require_once('common/utils/Validate.php');
+    $error = Validate::domain($complete_domain);
+    //if no problem
+    if(empty($error))
+    {
+        Globals::redirect("register_confirm.php?domain=$complete_domain");
+    }
 }
 else //it is empty
 {
-	$complete_domain = 'example.com';
+    $complete_domain = 'example.com';
 }
 
 $error = Globals::get_param('error', $_GET, $error);

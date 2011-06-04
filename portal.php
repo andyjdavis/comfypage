@@ -17,7 +17,6 @@
 /**
  *
  *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -45,8 +44,6 @@ if($gs->operating_under_subdomain())
 }
 
 $portal_settings = Load::portal_settings();
-
-//$portal_settings_names = $portal_settings->get_setting_names();
 $portal_settings_names = array(USE_MY_TEMPLATE, USE_MY_STYLE, PORTAL_BRAND);
 if(isset($_POST['save_portal_settings']))
 {

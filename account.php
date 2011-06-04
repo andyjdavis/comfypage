@@ -15,9 +15,6 @@
 // along with ComfyPage.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * ComfyPage frontpage
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,7 +23,6 @@ if(!isset($_SESSION)) {
 }
 
 require_once('common/utils/Globals.php');
-//require_once('common/paypal/paypal_functions.php');
 require_once('common/menu.php');
 
 Globals::dont_cache();
@@ -41,12 +37,6 @@ $success = null;
 require_once('common/utils/Load.php');
 $gs = Load::general_settings();
 $site_address = $gs->get(NEW_SITE_ID);
-//$page_view_limit = PAGE_VIEW_MONTHLY_LIMIT;
-//$counter = Load::counter_settings();
-//$page_view_count = $counter->get(PAGE_VIEW_COUNT_NEW);
-
-//$unlimited_start = $counter->get_12_months_unlimited_start_date();
-//$unlimited_end = $counter->get_12_months_unlimited_end_date();
 
 $del = Globals::get_param('del', $_POST);
 if($del=='42')
@@ -54,15 +44,10 @@ if($del=='42')
 	require_once('common/ServerInterface.php');
 	$si = new ServerInterface;
 	$si->delete_this_site();
-	//Globals::redirect('http://comfypage.com');
 }
 
 $success = Globals::get_param('success', $_GET	);
-//$credit_control = Load::credit_settings();
-//$txn_history = $credit_control->get(CREDIT_USAGES);
 
-//$paypal = Load::paypal_settings();
-//$payments_pending = $paypal->get(PAYMENTS_PENDING);
 $operating_under_domain = $gs->operating_under_domain();
 
 $setting_names = array(ADMIN_EMAIL, PASSWORD, LANG, TRACKING_CODE);
@@ -73,16 +58,16 @@ if(isset($_POST[SAVE_ACCOUNT_SETTINGS]))
     $tracking_code = $gs->get(TRACKING_CODE);
     if(empty($tracking_code) == false)
     {
-		Load::award_settings()->bestow_award(ADD_TRACKING_CODE_AWARD);
-	}
+        Load::award_settings()->bestow_award(ADD_TRACKING_CODE_AWARD);
+    }
     if(empty($error))
     {
-		$success = 'Saved';
-	}
-	else
-	{
-		$error = Message::format_errors($error, '<a href="account.php">Discard changes</a>');
-	}
+        $success = 'Saved';
+    }
+    else
+    {
+        $error = Message::format_errors($error, '<a href="account.php">Discard changes</a>');
+    }
 }
 
 ?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">

@@ -15,9 +15,8 @@
 // along with ComfyPage.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * ComfyPage site map
+ * ComfyPage site map generator
  *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -36,26 +35,26 @@ $fp = $sitemapsDir.$siteId.'.xml';
 
 if(FORCE_REGEN || !file_exists($fp))
 {
-	require_once('common/utils/Globals.php');
-	require_once('common/file.php');
-	
-	$file_admin = new FileAdmin();
-	if(!$file_admin->folder_does_exist($cacheDir))
-	{
-		$file_admin->mkdir_r($cacheDir, 0744);
-	}
-	if(!$file_admin->folder_does_exist($sitemapsDir))
-	{
-		$file_admin->mkdir_r($sitemapsDir, 0744);
-	}
-	createSitemap($fp);
+    require_once('common/utils/Globals.php');
+    require_once('common/file.php');
+
+    $file_admin = new FileAdmin();
+    if(!$file_admin->folder_does_exist($cacheDir))
+    {
+        $file_admin->mkdir_r($cacheDir, 0744);
+    }
+    if(!$file_admin->folder_does_exist($sitemapsDir))
+    {
+        $file_admin->mkdir_r($sitemapsDir, 0744);
+    }
+    createSitemap($fp);
 }
 
 $handle = fopen($fp,'r');
 $l = filesize($fp);
 if($l>0)
 {
-	$s = fread($handle, $l);
+    $s = fread($handle, $l);
 }
 fclose($handle);
 echo($s);

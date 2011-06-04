@@ -17,7 +17,6 @@
 /**
  * Site creation wizard
  *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -37,16 +36,16 @@ $wizard = $gs->get(NEED_DO_WIZARD);
 
 if($wizard && $wizard!='default')
 {
-	$path = 'common/contentServer/wizard/' . $wizard . '/' . $page . '.php';
+    $path = 'common/contentServer/wizard/' . $wizard . '/' . $page . '.php';
 }
 else
 {
-	$path = 'common/contentServer/wizard/' . $page . '.php';
+    $path = 'common/contentServer/wizard/' . $page . '.php';
 }
 
 if(!file_exists($path))
 {
-	Globals::redirect('wizard.php?page=' . $defaultPage);
+    Globals::redirect('wizard.php?page=' . $defaultPage);
 }
 
 require($path);

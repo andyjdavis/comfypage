@@ -15,9 +15,6 @@
 // along with ComfyPage.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * ComfyPage frontpage
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,15 +24,11 @@ if(!isset($_SESSION)) {
 
 require_once('common/utils/Globals.php');
 require_once('common/file.php');
-//require_once('common/general_settings.php');
-//require_once('common/credit.php');
 require_once('common/cache.php');
 include_once('common/menu.php');
 
 Globals::dont_cache();
 Login::logged_in();
-//site_enabled_check();
-//track_user();
 
 $success = null;
 
@@ -56,40 +49,37 @@ $pwd = '';
 
 $structure = $files->get_folder_structure();
 $file_list = $files->get_files($pwd);
-//$files_used_count = $files->get_file_count();
-//$file_limit = get_file_limit();
-//$file_limit_reached = $files_used_count >= $file_limit;
 
 function get_structure_html($structure, $depth = 0, $base_path = '', $pwd = null)
 {
-	//if not starting at top
-	if(empty($base_path) == false)
-	{
-	    //add the base path with a slash
-		$base_path = "$base_path/";
+    //if not starting at top
+    if(empty($base_path) == false)
+    {
+        //add the base path with a slash
+        $base_path = "$base_path/";
 
-		//this is done only when not at the top
-		//because if bas path is blank we don't want to add the slash
-	}
+        //this is done only when not at the top
+        //because if bas path is blank we don't want to add the slash
+    }
 
-	$html = '<ul>';
-	$folder_names = array_keys($structure);
-	natcasesort($folder_names);
-	
-	foreach($folder_names as $folder_name)
-	{
-		$full_path = "$base_path$folder_name";
-		$html .= '<li>' . get_folder_line($full_path, $folder_name, $pwd) . '</li>';
-		$html .= get_structure_html($structure[$folder_name], $depth + 1, $full_path, $pwd);
-	}
-	$html .= '</ul>';
-	return $html;
+    $html = '<ul>';
+    $folder_names = array_keys($structure);
+    natcasesort($folder_names);
+
+    foreach($folder_names as $folder_name)
+    {
+        $full_path = "$base_path$folder_name";
+        $html .= '<li>' . get_folder_line($full_path, $folder_name, $pwd) . '</li>';
+        $html .= get_structure_html($structure[$folder_name], $depth + 1, $full_path, $pwd);
+    }
+    $html .= '</ul>';
+    return $html;
 }
 function get_folder_line($dir, $display_text = null, $pwd = null)
 {	
-	$folder_img = "<img border=0 src=common/images/closed_folder.gif>";
-	//$dir = urlencode($dir);
-	return '<a style="text-decoration:none;" href="javascript:SelectFile(\'site/UserFiles/'.$dir.'\');">'.$folder_img.$display_text.'</a>';
+    $folder_img = "<img border=0 src=common/images/closed_folder.gif>";
+    //$dir = urlencode($dir);
+    return '<a style="text-decoration:none;" href="javascript:SelectFile(\'site/UserFiles/'.$dir.'\');">'.$folder_img.$display_text.'</a>';
 }
 
 ?>

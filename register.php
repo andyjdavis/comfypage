@@ -16,8 +16,6 @@
 
 /**
  *
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,29 +25,22 @@ if(!isset($_SESSION)) {
 
 require_once('common/utils/Globals.php');
 require_once('common/menu.php');
-//require_once('common/general_settings.php');
 
 $gs = Load::general_settings();
 
 if($gs->operating_under_domain())
 {
-	//this page is used to go from demo to paid site
-	//so if not in demo then they don't need it
-	exit();
+    //this page is used to go from demo to paid site
+    //so if not in demo then they don't need it
+    exit();
 }
 
 Globals::dont_cache();
 Login::logged_in();
-//track_user();
 
 $error = null;
 $success = null;
 
-/*
-if(isset($_GET['error']))
-{
-	$error = $_GET['error'];
-}*/
 $error = Globals::get_param('error', $_GET);
 ?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>

@@ -16,8 +16,6 @@
 
 /**
  *
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,31 +27,27 @@ require_once('common/contentServer/product_page.php');
 require_once('common/utils/Globals.php');
 require_once('common/users_items/Product.php');
 
-//site_enabled_check();
-//track_user();
-
 $counter = Load::counter_settings();
 $counter->page_viewed();
 
 $product_id = Globals::get_param(PRODUCT_ID_URL_PARAM, $_GET);
 if($product_id != null)
 {
-	$prs = Load::product_store();
-	if($prs->store_item_exists($product_id) == false)
-	{
+    $prs = Load::product_store();
+    if($prs->store_item_exists($product_id) == false)
+    {
         require_once('common/contentServer/content_page.php');
         $page = get_content_page(ERROR_CONTENT);
-	}
-	else
-	{
-		$page = get_product_page($product_id);
-	}
-	echo($page);
-	exit();
+    }
+    else
+    {
+        $page = get_product_page($product_id);
+    }
+    echo($page);
+    exit();
 }
 else
 {
-	Globals::redirect('index.php');
+    Globals::redirect('index.php');
 }
-
 ?>

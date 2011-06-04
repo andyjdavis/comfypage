@@ -15,9 +15,7 @@
 // along with ComfyPage.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *
- *
-
+ * Provides robots.txt Use apache mod_rewrite to use this script to service requests for robots.txt
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

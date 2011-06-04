@@ -15,9 +15,6 @@
 // along with ComfyPage.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * ComfyPage frontpage
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -30,8 +27,6 @@ require_once('common/menu.php');
 
 Globals::dont_cache();
 Login::logged_in();
-//site_enabled_check();
-//track_user();
 
 $error = null;
 $success = null;
@@ -49,15 +44,15 @@ $function_key = Globals::get_param(FUNCTION_GET_PARAM, $_POST, $function_key);
 
 if($function_key != null)
 {
-	$function_exists = Addon::exists($function_key);
-	if($function_exists == false)
-	{
-		$error = 'The specified add-on does not exist. Select an add-on from the <a href=function_admin.php>add-on list</a>';
-	}
+    $function_exists = Addon::exists($function_key);
+    if($function_exists == false)
+    {
+        $error = 'The specified add-on does not exist. Select an add-on from the <a href=function_admin.php>add-on list</a>';
+    }
 }
 else
 {
-	$error = 'No add-on was specified. Select one from the <a href=function_admin.php>add-on list</a>';
+    $error = 'No add-on was specified. Select one from the <a href=function_admin.php>add-on list</a>';
 }
 $doodad = Load::addon($function_key);
 if(isset($_POST[SAVE_VAR]))
@@ -73,84 +68,27 @@ if(isset($_POST[SAVE_VAR]))
 }
 else
 {
-	//if not saving still need to check validity of settings
-	if($doodad->is_valid(true) == false)
-	{
-		$error = 'Please complete the configuration';
-	}
+    //if not saving still need to check validity of settings
+    if($doodad->is_valid(true) == false)
+    {
+        $error = 'Please complete the configuration';
+    }
 }
-/*
-if(isset($_POST[SAVE_VAR]))
-{
-	$setting_names = array_keys($doodad_settings);
-
-	//for each setting
-	for($i=0; $i<count($setting_names); $i++)
-	{
-		$setting_name = $setting_names[$i];
-
-		if(isset($_POST[$setting_name]))
-		{
-			//$new_setting_value = $_POST[$setting_name];
-			$new_setting_value = Globals::get_param($setting_name, $_POST);
-		}
-		//if there is a setting called $setting_name but no GET var named that
-		//then it was a checkbox that is unchecked
-		else
-		{
-		    //it was an unchecked checkbox so set the value to false
-            $new_setting_value = false;
-		}
-
-		//store new value. It's ok if it's not valid because it won't be saved if it isn't
-		$doodad_settings[$setting_name] = $new_setting_value;
-	}
-
-	//record any validation erros
-	$doodad = load_doodad($function_key);
-	$error = $doodad->validate_doodad_settings($doodad_settings);
-
-	//if no errors
-	if(empty($error))
-	{
-		//write the payment processors settings
-		save_doodad_settings($function_key, $doodad_settings);
-		$success = 'Options saved';
-		track_user('Saved add-on options');
-	}
-	else //if errors
-	{
-		$error = "<p>New settings cant be saved</p><p>$error</p><p><a href=\"function.php?" . FUNCTION_GET_PARAM . "=$function_key\">Discard changes</a></p>";
-		track_user('Add-on options failed to save due to invalid user input');
-	}
-}
-else
-{
-	$doodad = load_doodad($function_key);
-	if($doodad != null) //will be null if not loaded
-	{
-		$error = $doodad->validate_doodad_settings($doodad_settings);
-		if(empty($error) == false)
-		{
-			$error = "<p>Please correct the errors</p><p>$error</p>";
-		}
-	}
-}*/
 
 //execute here before any output. In case the function does a redirct
 //$execution_output = ExecuteFunction($function_key, '""', true);
 $execution_output = Addon::execute($function_key, '""', true);
 function GetFunctionItemTableRow($description, $input)
 {
-	$row = '<tr>';
-	$row .= '<td valign="top">';
-	$row .= Globals::t($description);
-	$row .= '</td>';
-	$row .= '<td valign="top" width="70%">';
-	$row .= $input;
-	$row .= '</td>';
-	$row .= '</tr>';
-	return $row;
+    $row = '<tr>';
+    $row .= '<td valign="top">';
+    $row .= Globals::t($description);
+    $row .= '</td>';
+    $row .= '<td valign="top" width="70%">';
+    $row .= $input;
+    $row .= '</td>';
+    $row .= '</tr>';
+    return $row;
 }
 ?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>

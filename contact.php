@@ -15,9 +15,6 @@
 // along with ComfyPage.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * ComfyPage frontpage
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -39,53 +36,53 @@ $message = null;
 
 if(Login::logged_in(false))
 {
-	$from = Load::general_settings(ADMIN_EMAIL);
+    $from = Load::general_settings(ADMIN_EMAIL);
 }
 
 if($contact_enabled == false && $_POST)
 {
-	$error = "You must upgrade to contact the creators of ComfyPage";
+    $error = "You must upgrade to contact the creators of ComfyPage";
 }
 else if($_POST)
 {
-	require_once('common/lib/form_spam_blocker/fsbb.php');
-	if(check_hidden_tags($_POST) == false)
-	{
-		$error = 'An error occurred. Please try again.';
-	}
+    require_once('common/lib/form_spam_blocker/fsbb.php');
+    if(check_hidden_tags($_POST) == false)
+    {
+        $error = 'An error occurred. Please try again.';
+    }
 
-	require_once('common/utils/Validate.php');
+    require_once('common/utils/Validate.php');
 
-	$from = Globals::get_param('email', $_POST);
-	$message = Globals::get_param('message', $_POST);
-	$feeling = Globals::get_param('feeling', $_POST);
+    $from = Globals::get_param('email', $_POST);
+    $message = Globals::get_param('message', $_POST);
+    $feeling = Globals::get_param('feeling', $_POST);
 
-	$temp = Validate::email($from);
-	if(empty($temp) == false) $error = "$temp<br>";
+    $temp = Validate::email($from);
+    if(empty($temp) == false) $error = "$temp<br>";
 
-	$temp = Validate::required($message, 'Message');
-	if(empty($temp) == false) $error .= "$temp<br>";
+    $temp = Validate::required($message, 'Message');
+    if(empty($temp) == false) $error .= "$temp<br>";
 
-	if(empty($error) == true)
-	{
-		$subject = 'ComfyPage support request from NOT logged in user';
-		if(Login::logged_in(false))
-		{
-			$subject = 'ComfyPage support request from logged in user ('.Load::general_settings(NEW_SITE_ID).')';
-		}
+    if(empty($error) == true)
+    {
+        $subject = 'ComfyPage support request from NOT logged in user';
+        if(Login::logged_in(false))
+        {
+            $subject = 'ComfyPage support request from logged in user ('.Load::general_settings(NEW_SITE_ID).')';
+        }
 
-		$message_to_send = "I am feeling - $feeling. \r\n$message";
-		if(Globals::send_email_to_us($subject, $message_to_send, $from))
-		{
-			$success = 'Your message has been sent';
-			//protect against back or refresh
-			Globals::redirect("contact.php?success=$success");
- 		}
-		else
-		{
-			$error = 'Sorry, the message failed to send. Please try again.';
-		}
-	}
+        $message_to_send = "I am feeling - $feeling. \r\n$message";
+        if(Globals::send_email_to_us($subject, $message_to_send, $from))
+        {
+            $success = 'Your message has been sent';
+            //protect against back or refresh
+            Globals::redirect("contact.php?success=$success");
+        }
+        else
+        {
+            $error = 'Sorry, the message failed to send. Please try again.';
+        }
+    }
 }
 $success = Globals::get_param('success', $_GET);
 
@@ -101,12 +98,12 @@ $success = Globals::get_param('success', $_GET);
 		<script LANGUAGE=JavaScript SRC="common/contentServer/contentServer.js"></script>
 	</head>
 	<body>
-		<?php
+            <?php
 	    if(Login::logged_in(false))
 	    {
                 echo(get_menu('Contact a human'));
             }
-		?>
+            ?>
 			<form target=_blank action="http://www.google.com/search" method="get" style="text-align:center;margin: 0pt; padding: 0pt;">
 			<table align="center" class="admin_table" border="0" style="text-align:center;">
 				<tr><td>

@@ -16,8 +16,6 @@
 
 /**
  *
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,8 +27,6 @@ require_once('common/utils/Globals.php');
 
 Globals::dont_cache();
 Login::logged_in();
-//site_enabled_check();
-//track_user();
 
 define('DELETE_PRODUCT_URL_PARAM', 'delete');
 define('CREATE_PRODUCT_URL_PARAM', 'create');
@@ -39,7 +35,6 @@ define('COPY_PRODUCT_URL_PARAM', 'copy');
 $error = null;
 $success = null;
 
-//require_once('common/contentServer/payment_general_settings.php');
 $pgs = Load::payment_general_settings();
 $currency_in_use = $pgs->get(PAYMENT_CURRENCY);
 

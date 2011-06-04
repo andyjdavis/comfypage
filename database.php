@@ -15,9 +15,6 @@
 // along with ComfyPage.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -58,8 +55,8 @@ $display_output = null;
 ///if haven't chosen anything to edit
 if($setting_class_selected == null && $page_id_selected == null && $product_id_selected == null && $function_id_selected == null && $payment_id_selected == null && $user_id_selected == null)
 {
-	//choose sometihng to start with
-	$setting_class_selected = 'GeneralSettings';
+    //choose sometihng to start with
+    $setting_class_selected = 'GeneralSettings';
 }
 if($setting_class_selected == 'GeneralSettings')
 {
@@ -67,35 +64,35 @@ if($setting_class_selected == 'GeneralSettings')
 }
 else if($setting_class_selected == 'MemberSettings')
 {
-	$class = Load::member_settings();
+    $class = Load::member_settings();
 }
 else if($setting_class_selected == 'CounterSettings')
 {
-	$class = Load::counter_settings();
+    $class = Load::counter_settings();
 }
 else if($setting_class_selected == 'EmailSettings')
 {
-	$class = Load::email_settings();
+    $class = Load::email_settings();
 }
 else if($setting_class_selected == 'PaymentGeneralSettings')
 {
-	$class = Load::payment_general_settings();
+    $class = Load::payment_general_settings();
 }
 else if($setting_class_selected == 'Permissions')
 {
-	$class = Load::permission_settings();
+    $class = Load::permission_settings();
 }
 else if($setting_class_selected == 'PayPalSettings')
 {
-	$class = Load::paypal_settings();
+    $class = Load::paypal_settings();
 }
 else if($setting_class_selected == 'Portal')
 {
-	$class = Load::portal_settings();
+    $class = Load::portal_settings();
 }
 else if($setting_class_selected == 'AwardSettings')
 {
-	$class = Load::award_settings();
+    $class = Load::award_settings();
 }
 else if($page_id_selected != null)
 {
@@ -133,18 +130,18 @@ if($_POST)
 if($page_id_selected != null)
 {
     $display_output = $class->get(RAW_CONTENT);
-	$display_title = 'Page content';
+    $display_title = 'Page content';
 }
 else if($product_id_selected != null)
 {
     require_once('common/contentServer/product_page.php');
-	$display_output = get_product_display($class);
-	$display_title = 'Product display';
+    $display_output = get_product_display($class);
+    $display_title = 'Product display';
 }
 else if($function_id_selected != null)
 {
-	$display_output = Addon::execute($function_id_selected, 'fake_content_id');
-	$display_title = 'Add-on output';
+    $display_output = Addon::execute($function_id_selected, 'fake_content_id');
+    $display_title = 'Add-on output';
 }
 
 ?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
@@ -154,9 +151,9 @@ else if($function_id_selected != null)
 	</head>
 	<body style="margin:0;">
 	    <?php
-			require_once('common/menu.php');
-			$m = new Menu();
-			echo($m->get_menu());
+                require_once('common/menu.php');
+                $m = new Menu();
+                echo($m->get_menu());
 	    ?>
 		<div style="padding:0.3em;">
 	        <?php
@@ -168,13 +165,13 @@ else if($function_id_selected != null)
 	                echo("<a href=\"database.php?settingclass=$settings_class\">$settings_class</a> &nbsp;&nbsp;");
 	            }
 	            echo('</p>');
-				echo('<p><b>Pages</b> ');
+                    echo('<p><b>Pages</b> ');
 	            foreach($stored_pages as $page_id)
 	            {
 	                echo("<a href=\"database.php?page=$page_id\">$page_id</a> &nbsp;&nbsp;");
 	            }
 	            echo('</p>');
-				echo('<p><b>Products</b> ');
+                    echo('<p><b>Products</b> ');
 	            foreach($stored_products as $product_id)
 	            {
 	                echo("<a href=\"database.php?product=$product_id\">$product_id</a> &nbsp;&nbsp;");
@@ -202,15 +199,15 @@ else if($function_id_selected != null)
 	        ?>
 	        <!--<form method="post">
 	            <table align="center" cellpadding="5" width="90%" cellspacing="2" style='border:solid black 1px;'>
-			        <?php
-			            $setting_names = $class->get_setting_names();
-			            foreach($setting_names as $setting_name)
-			            {
-			                echo('<tr><td>'.$class->get_description($setting_name).'</td>');
-			                echo('<td width="60%">'.$class->get_input($setting_name).'</td>');
-			                echo("<td><span style='color:red;'> ".$class->get_error($setting_name)."</span></td></tr>");
-			            }
-			        ?>
+                    <?php
+                        $setting_names = $class->get_setting_names();
+                        foreach($setting_names as $setting_name)
+                        {
+                            echo('<tr><td>'.$class->get_description($setting_name).'</td>');
+                            echo('<td width="60%">'.$class->get_input($setting_name).'</td>');
+                            echo("<td><span style='color:red;'> ".$class->get_error($setting_name)."</span></td></tr>");
+                        }
+                    ?>
 	                <tr>
 	                	<td>
 	    					<input style="font-size:larger;" type="submit" value=" Save ">

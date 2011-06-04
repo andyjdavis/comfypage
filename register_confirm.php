@@ -15,9 +15,6 @@
 // along with ComfyPage.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,21 +23,19 @@ if(!isset($_SESSION)) {
 }
 
 require_once('common/utils/Globals.php');
-//require_once('common/general_settings.php');
 require_once('common/menu.php');
 
 $gs = Load::general_settings();
 
 if($gs->operating_under_domain())
 {
-	//this page is used to go from demo to paid site
-	//so if not in demo then they don't need it
-	exit();
+    //this page is used to go from demo to paid site
+    //so if not in demo then they don't need it
+    exit();
 }
 
 Globals::dont_cache();
 Login::logged_in();
-//track_user();
 
 $error = null;
 $success = null;
@@ -49,32 +44,27 @@ $success = null;
 $move_complete = false;
 
 $chosen_domain = Globals::get_param('domain', $_GET);
-//if(isset($_GET['domain']))
 if($chosen_domain != null)
 {
 	//extract reg info
-//	$chosen_domain = $_GET['domain'];
 	require_once('common/utils/Validate.php');
 	$domain_errors = Validate::domain($chosen_domain);
 	//if there's a problem
 	if(empty($domain_errors) == false)
 	{
-		//start at the beginning
-		//track_user('Registration info incomplete. Sending back to beginning.');
+		//Registration info incomplete. Sending back to beginning
 		Globals::redirect('register.php');
 	}
 }
 $confirmed_domain = Globals::get_param('confirmed_domain', $_POST);
-//if(isset($_POST['confirmed_domain']))
+
 if($confirmed_domain != null)
 {
-	//$domain = $_POST['confirmed_domain'];
 	$domain_errors = Validate::domain($confirmed_domain);
 	if(empty($domain_errors))
 	{
 		require_once('common/ServerInterface.php');
-		//track_user('Moving to own domain');
-		//$error = move_this_site_to_domain($confirmed_domain);
+		//Moving to own domain
 		$si = new ServerInterface;
 		$error = $si->move_to_domain($confirmed_domain);
 		if(empty($error))

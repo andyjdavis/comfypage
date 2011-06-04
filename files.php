@@ -15,9 +15,6 @@
 // along with ComfyPage.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * ComfyPage frontpage
- *
-
  * @copyright  2006 onwards Affinity Software (http://affinitysoftware.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -39,88 +36,76 @@ $success = null;
 $select = isset($_GET['select']);
 if(isset($_POST['select']))
 {
-	$select = true;
+    $select = true;
 }
 //the get var to add to maintain the select otpion while moving thru file manager
 $select_var = null;
 if($select)
 {
-	$select_var = 'select=true';
+    $select_var = 'select=true';
 }
 $pwd = Globals::get_param('folder', $_GET);
 $pwd = Globals::get_param('folder', $_POST, $pwd);
 if($pwd == '.' || $pwd == '..' || $pwd == '/')
 {
-	$pwd = '';
+    $pwd = '';
 }
 $new_folder = Globals::get_param('new_folder', $_POST);
-//if(isset($_POST['new_folder']))
+
 if($new_folder != null)
 {
-	//$folder = $_POST['new_folder'];
-	//$pwd = urldecode($_POST['folder']);
-	$temp = Globals::get_param('folder', $_POST);
-	$pwd = urldecode($temp);
-	//$new_folder = trim($new_folder, '/');
- 	$new_pwd = "$pwd/$new_folder";
- 	$new_folder_error = $files->is_filename_ok($new_folder);
- 	if(empty($new_folder_error))
- 	{
-		$files->create_folder($new_pwd);
-		$success = 'Folder created';
-		$pwd = trim($new_pwd, '/'); //change working dir
-		//track_user('Created a folder');
-	}
-	else
-	{
-		$error = $new_folder_error;
-		//track_user('Tried to create a folder with a bad name', true, $new_folder);
-	}
+    $temp = Globals::get_param('folder', $_POST);
+    $pwd = urldecode($temp);
+    $new_pwd = "$pwd/$new_folder";
+    $new_folder_error = $files->is_filename_ok($new_folder);
+    if(empty($new_folder_error))
+    {
+        $files->create_folder($new_pwd);
+        $success = 'Folder created';
+        $pwd = trim($new_pwd, '/'); //change working dir
+    }
+    else
+    {
+        $error = $new_folder_error;
+    }
 }
 $delete_folder = Globals::get_param('delete_folder', $_GET);
-//if(isset($_GET['delete_folder']))
+
 if($delete_folder != null)
 {
- 	$folder_name_errors = $files->is_filename_ok($delete_folder);
- 	if(empty($folder_name_errors))
- 	{
-		//$folder = $_GET['delete_folder'];
-		$size = $files->delete_folder($delete_folder);
-		require_once('common/cache.php');
-		//log_this(IMAGE_CACHE . $delete_folder);
-		$files->delete_folder(IMAGE_CACHE . $delete_folder, false);
-		$success = 'Folder deleted';
-		//track_user('Deleted a folder', true, $size);
-		//redirect to get rid of get vars in addy
-		Globals::redirect("files.php?folder=$pwd&$select_var");
-	}
-	else
-	{
-		$error = $folder_name_errors;
-		//track_user('Tried to delete a folder with a bad name', true, $delete_folder);
-	}
+    $folder_name_errors = $files->is_filename_ok($delete_folder);
+    if(empty($folder_name_errors))
+    {
+        $size = $files->delete_folder($delete_folder);
+        require_once('common/cache.php');
+        $files->delete_folder(IMAGE_CACHE . $delete_folder, false);
+        $success = 'Folder deleted';
+        //redirect to get rid of get vars in addy
+        Globals::redirect("files.php?folder=$pwd&$select_var");
+    }
+    else
+    {
+        $error = $folder_name_errors;
+    }
 }
 $delete_file = Globals::get_param('delete', $_GET);
-//if(isset($_GET['delete']))
+
 if($delete_file != null)
 {
- 	$file_name_errors = $files->is_filename_ok($delete_file);
- 	if(empty($file_name_errors))
- 	{
-		//$delete_file = $_GET['delete'];
-		$size = $files->delete("$pwd/$delete_file");
-		require_once('common/cache.php');
-		$cache->delete_thumb("$pwd/$delete_file");
-		$success = 'File deleted';
-		//track_user('Deleted a file', true, $size);
-		//redirect to get rid of get vars in addy
-		Globals::redirect("files.php?folder=$pwd&$select_var");
-	}
-	else
-	{
-		$error = $file_name_errors;
-		//track_user('Tried to delete a file with a bad name', true, $delete_file);
-	}
+    $file_name_errors = $files->is_filename_ok($delete_file);
+    if(empty($file_name_errors))
+    {
+        $size = $files->delete("$pwd/$delete_file");
+        require_once('common/cache.php');
+        $cache->delete_thumb("$pwd/$delete_file");
+        $success = 'File deleted';
+        //redirect to get rid of get vars in addy
+        Globals::redirect("files.php?folder=$pwd&$select_var");
+    }
+    else
+    {
+        $error = $file_name_errors;
+    }
 }
 $resize_file = Globals::get_param('resize', $_GET);
 if($resize_file != null)
@@ -132,28 +117,22 @@ if($resize_file != null)
 		$real_path = $files->get_real_path("$pwd/$resize_file");
 		do_image_resize_for_me($real_path);
 		$success = 'Image resized';
-		//track_user('Resized an image', true);
 		//redirect to get rid of get vars in addy
 		Globals::redirect("files.php?folder=$pwd&$select_var&success=Image resized");
 	}
 	else
 	{
 		$error = $file_name_errors;
-		//track_user('Tried to resize a file with a bad name', true, $resize_file);
 	}
 }
 if(isset($_FILES['userfile']))
 {
-	//require_once('common/credit.php');
-	//$credit_control->user_wants_a(FILE);
     $error = $files->upload_file($pwd);
 	if(empty($error))
 	{
 		require_once('common/cache.php');
 		$name = $_FILES['userfile']['name'];
-		//$cache = new Cache;
 		$name = ltrim($name, '/'); //get rid of slash on start of file if it has one
-		//$cache->create_thumb("$pwd/$name");
 		$success = 'Upload done';
 		Load::award_settings()->bestow_award(UPLOAD_IMAGE_AWARD);
 		//if they uploaded while selecting a file
@@ -172,62 +151,58 @@ if(isset($_FILES['userfile']))
 			$success = "$success<br><a href='javascript:SelectFile(\"site/UserFiles/$rel_path\");'>Select uploaded file</a>";
 		}
 		$size = $files->get_upload_size();
-		//track_user('Uploaded a file', true, $size);
 	}
 	else
 	{
-		//track_user('Upload file failed');
+            //Upload file failed
 	}
 }
 $success = Globals::get_param('success', $_GET, $success);
 
 $structure = $files->get_folder_structure();
 $file_list = $files->get_files($pwd);
-//$files_used_count = $files->get_file_count();
-//$file_limit = get_file_limit();
-//$file_limit_reached = $files_used_count >= $file_limit;
 
 function get_structure_html($structure, $depth = 0, $base_path = '', $pwd = null)
 {
-	//if not starting at top
-	if(empty($base_path) == false)
-	{
-	    //add the base path with a slash
-		$base_path = "$base_path/";
+    //if not starting at top
+    if(empty($base_path) == false)
+    {
+        //add the base path with a slash
+        $base_path = "$base_path/";
 
-		//this is done only when not at the top
-		//because if bas path is blank we don't want to add the slash
-	}
+        //this is done only when not at the top
+        //because if bas path is blank we don't want to add the slash
+    }
 
-	$html = '<ul>';
-	$folder_names = array_keys($structure);
-	natcasesort($folder_names);
+    $html = '<ul>';
+    $folder_names = array_keys($structure);
+    natcasesort($folder_names);
     foreach($folder_names as $folder_name)
     {
         $full_path = "$base_path$folder_name";
-		$html .= '<li>' . get_folder_line($full_path, $folder_name, $pwd) . '</li>';
-		$html .= get_structure_html($structure[$folder_name], $depth + 1, $full_path, $pwd);
-	}
-	$html .= '</ul>';
-	return $html;
+            $html .= '<li>' . get_folder_line($full_path, $folder_name, $pwd) . '</li>';
+            $html .= get_structure_html($structure[$folder_name], $depth + 1, $full_path, $pwd);
+    }
+    $html .= '</ul>';
+    return $html;
 }
 function get_folder_line($dir, $display_text = null, $pwd = null)
 {
-	global $select_var;
+    global $select_var;
 
-	$folder_img = "<img border=0 src=common/images/closed_folder.gif>";
-	if($pwd == $dir)
-	{
-		$display_text = "<b>$display_text</b>";
-		$folder_img = "<img border=0 src=common/images/open_folder.gif>";
-	}
-	//make sure path is properly encoded
+    $folder_img = "<img border=0 src=common/images/closed_folder.gif>";
+    if($pwd == $dir)
+    {
+        $display_text = "<b>$display_text</b>";
+        $folder_img = "<img border=0 src=common/images/open_folder.gif>";
+    }
+    //make sure path is properly encoded
     $dir = urlencode($dir);
-	if(empty($display_text))
-	{
-		$display_text = $dir;
-	}
-	return "<a style='text-decoration:none;' href='files.php?folder=$dir&$select_var'>$folder_img $display_text</a>";
+    if(empty($display_text))
+    {
+        $display_text = $dir;
+    }
+    return "<a style='text-decoration:none;' href='files.php?folder=$dir&$select_var'>$folder_img $display_text</a>";
 }
 function get_file_row($file, $path, $pwd, $select_on = false, $resizeable = false, $real_path)
 {

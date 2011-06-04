@@ -1,0 +1,64 @@
+/* A fluid template for business or fun */
+/* By Dave Reeder, www.davereederdesign.com */
+
+body { margin: 0; padding: 0;}
+
+* {margin: 0; padding: 0; border: 0; font-family: Verdana, Arial, sans-serif; }
+
+a { text-decoration: none; font-style: italic}
+a:hover {color: #fff; text-decoration: underline}
+
+/*---------------------------------------------Layout------------------------------------------------------*/
+
+
+.rowcontainer {	/* Used to keep the divs in a row.  you can use this for any size of divs */
+	margin-top: 5px;
+	width: 100%;
+	overflow: hidden;
+}
+
+#navbar {position: relative; width: 100%; height: 2.0em; }
+
+#bttmbar a {color: #000; text-decoration: underline; font-style: normal}
+#bttmbar a:hover {text-decoration: none}
+
+/*---------------------------------------------Main Nav------------------------------------------------------*/
+
+ul#nav {margin: 0; position: absolute; bottom: 0; left: 10px; list-style: none inside; background: #111}
+ul#nav li {float: left; margin-right: 1px}
+
+ul#nav a {
+	font-weight: bold;
+	display: block;
+	width: 8em;
+	height: 2.50em; 
+	line-height: 2.50em;
+	padding-left: 10px;
+	text-decoration: none
+}
+
+ul#nav li a:link, ul#nav li a:visited  {
+	background: #444;
+	color: #fff
+}
+
+ul#nav li a:hover, ul#nav li a:active {
+	color: #00CCFF;
+	background: #555
+}
+
+ul#nav li a.current {background: #CCFF00; color: #000}
+ul#nav li a.current:hover {background: #CCFF00; color: #00CCFF}
+
+/*---------------Columns: Note they dont add up to 100%, this is intentional to avoid problems!-----------*/ 
+
+
+.fullcolumn {float: left; width: 99%;}		/* Full width column for a one column site */
+
+.threequartercolumn {float: left; width: 74%;}		/* Three quarter width column for a two column site, pair with the onethirdcolumn div class */
+			
+.halfcolumn {float: left; width: 49%;}		/* Half width column for a two column site. */
+
+.onethirdcolumn {float: left; width: 33%; }		/* One third width column for a three column site */
+
+.onequartercolumn {float: left; width: 24.5% }		/* One quarter width column for a four column site */

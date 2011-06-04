@@ -1,0 +1,45 @@
+body
+{
+	margin : 0;
+	font-family:helvetica,arial sans-serif;
+}
+
+table.viewing
+{
+	width : 100%;
+}
+
+th.subheading
+{
+	font-weight : normal;
+}
+
+div.toolbar
+{
+	background-color : white;
+	color : black;
+	padding : 0.2em;
+	border : solid black 2px;
+	font-family : arial;
+}
+
+a.toolbar
+{
+	color : blue;
+}
+
+.admin
+{
+	font-family : arial;
+}
+
+div.aff_footer
+{
+  text-align : center;
+}
+
+p.aff_footer
+{
+  font-size : 8pt;
+  font-family : arial;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title><!--%TITLE%--></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<!--%META_DESCRIPTION%-->
+		<link href="common/common.css" rel="stylesheet" type="text/css">
+
+		<!--%JS%-->
+
+		<style TYPE="text/css">
+		<!--
+		%STYLE%
+		-->
+		
+		.marginDiv
+		{
+			padding:10px;
+		}
+		</style>
+		
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+		<script type="text/javascript" src="common/lib/jquery/jquery.corner.js" ></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+				hideMargin("theRightMarginDiv", "rightMargin");
+				hideMargin("theLeftMarginDiv", "leftMargin");
+				hideMargin("theFooterDiv", "footer");
+				hideMargin("theCentreDiv", "centre");
+				
+				$('.header').css('border-bottom', '4px solid '+$('h1').css('color'));
+			});
+			
+			function hideMargin(divId, marginId)
+			{
+				var div = $("#"+divId);
+				var margin = $('.'+marginId);
+				
+				if(div && margin)
+				{
+					if (div.html()=='' || div.html()==undefined)
+					{
+						div.remove();
+						margin.width("0px");
+					}
+					else
+					{
+						var marginCol = margin.css('background-color');
+						margin.css('background-color', $('body').css('background-color'));
+						
+						div.corner("round");
+						margin.css('padding', '10px');
+						
+						div.css('background-color', marginCol);
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<!--%CONTROLS%-->
+
+		<table class="viewing" cellspacing="0" cellpadding="0" style="width:95%;" align="center">
+			<tr>
+				<td colspan="3" class="header" style=""><!--%HEADER%--></td>
+			</tr>
+			<tr>
+				<td style='vertical-align : top;text-align:center;' class="leftMargin"><div id="theLeftMarginDiv" class="marginDiv"><!--%LEFT_MARGIN%--></div></td>
+				<td style='vertical-align : top;' class="centre"><div id="theCentreDiv" class="marginDiv"><!--%CENTRE%--></div></td>
+				<td style='vertical-align : top;text-align:center;' class="rightMargin"><div id="theRightMarginDiv" class="marginDiv"><!--%RIGHT_MARGIN%--></td>
+			</tr>
+			<tr>
+				<td colspan=3 class="footer">
+					<div id="theFooterDiv" class="marginDiv">
+						<!--%FOOTER%-->
+						<div class=aff_footer>
+							<p class=aff_footer>
+							<!--%AFFINITY%-->
+							</p>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+	</body>
+</html>

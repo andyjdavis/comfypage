@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<!--
+ * File Name: fck_poll.html
+ * 	ComfyPage poll dialog window.
+ * 
+ * File Authors:
+ * 		Andrew Davis - Affinity Software
+-->
+<html>
+	<head>
+		<title>Poll</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta content="noindex, nofollow" name="robots">
+		<!--<link rel="stylesheet" type="text/css" href="fck_poll.css" />-->
+		<script type="text/javascript">
+
+var oEditor = window.parent.InnerDialogLoaded() ;
+
+window.onload = function()
+{
+	document.body.style.padding = '0px' ;
+
+	// First of all, translate the dialog box texts
+	oEditor.FCKLanguageManager.TranslatePage(document) ;
+
+	window.parent.SetOkButton( true ) ;
+	window.parent.SetAutoSize( true ) ;	
+}
+
+function Ok()
+{
+	var oHeight = document.getElementById( 'height' ) ;
+	var oWidth = document.getElementById( 'width' ) ;
+
+	if ( oHeight.value.length > 0 && oWidth.value.length > 0 )
+		oEditor.FCK.InsertHtml( "<iframe src='poll_participate.php?i=1' width='"+oWidth.value+"' height='"+oHeight.value+"'></iframe>" ) ;
+
+	return true ;
+}
+
+		</script>
+	</head>
+	<body style="OVERFLOW: hidden" scroll="no">
+		height <input type="text" id="height" value="100"></input><br />
+		width  <input type="text" id="width" value="100"></input>
+		<iframe src="poll_list.php"></iframe>
+		<script type="text/javascript" src="dialogue.js"></script>
+		
+	</body>
+</html>

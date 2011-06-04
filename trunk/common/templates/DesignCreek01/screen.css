@@ -1,0 +1,126 @@
+body,td,th {
+	font-family: Trebuchet MS, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #000000;
+}
+body {
+	background-color: #333333;
+	margin: 10px;
+}
+a:link, a:visited, a:active {
+	color: #7de207;
+	text-decoration: none;
+}
+a:hover {
+	color: #7ee208;
+	text-decoration: none;
+}
+form {
+	margin: 0;
+}
+h2, h3, h4, h5 {
+	margin: 5px 0px 5px 0px;
+}
+h1 {
+	margin: 5px 0px 5px 0px;
+	color: #333333;
+}
+.header {
+	background-color: #FFFFFF;
+	color: #333333;
+	font-size: 20px;
+	background-image: url(images/left.jpg);
+	background-repeat: no-repeat;
+	background-position: top left;
+}
+.header h1 {
+	margin:0px 0px 0px 0px;
+	padding: 0px 0px;
+	background-image: url(images/right.png);
+	background-repeat: no-repeat;
+	background-position: center right;
+	height:30px;
+	font-size: 20px;
+}
+.menu {
+	background-color: #FFFFFF;
+	padding: 0px 10px;
+	width: 160px;
+	vertical-align: top;
+}
+li {
+	margin: 4px 8px;
+	margin-left: 20px;
+	padding-left: 5px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+.menu ul {
+	margin: 4px 8px;
+	margin-left: 20px;
+	padding-left: 5px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+.current {
+	font-weight: bold;
+}
+.content li {
+	margin:0px 0px 0px 0px;
+	padding:0px 0px 3px 5px;
+	list-style-image: url(images/bullet.gif);
+	background-color: transparent;
+}
+.content ul {
+	
+}
+.content h2 {
+	margin:0px 0px 0px 0px;
+	padding: 0px 80px;
+	background-repeat: no-repeat;
+	background-position: center left;
+	height:30px;
+	color: #333333;
+}
+.content {
+	background-color: #FFFFFF;
+	padding: 20px;
+	height: 400px;
+	vertical-align: top;
+	background-image: url(images/background.png);
+	background-repeat: no-repeat;
+	background-position: top right;
+}
+.content a{
+	color: #497eeb;
+}
+.content a:hover {
+	color: #a3c1fd;
+}
+.footer_top {
+	background-color: #333333;
+	text-align: right;
+	margin:0px 0px 0px 0px;
+	font-size: 10px;
+	height: 10px;
+	background-image: url(images/top.jpg);
+	background-repeat: no-repeat;
+	background-position: bottom left;
+}
+.footer_bottom {
+	background-color: #FFFFFF;
+	color: #cccccc;
+	text-align: right;
+	margin:0px 0px 0px 0px;
+	font-size: 11px;
+	height: 10px;
+	background-image: url(images/bottom.jpg);
+	background-repeat: no-repeat;
+	background-position: bottom right;
+}
+.footer_bottom a{
+	color: #acee3a;
+}
+.footer_bottom a:hover {
+	color: #7ee208;
+}

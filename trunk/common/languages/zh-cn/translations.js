@@ -1,0 +1,54 @@
+var theLanguage = "zh-cn";
+
+translations = new Array();
+
+translations["No add-on selected" ]="没有添加-关于选定";
+translations["Accept Donations" ]="接受捐款";
+translations["Appointment Request" ]="任命的请求";
+translations["Blog Post" ]="博客帖子";
+translations["Contact Us Form" ]="联系我们的形式";
+translations["Email this to a friend" ]="通过电子邮件发送给朋友";
+translations["Flickr Photo Gallery" ]="Flickr照片画廊";
+translations["Gallery" ]="画廊";
+translations["Google Adsense Ad Unit" ]="Google AdSense的广告单元";
+translations["Google Adsense Link Unit" ]="Google AdSense的链接单元";
+translations["Google Search" ]="Google搜索";
+translations["Mailing List" ]="邮寄名单";
+translations["Page Listing" ]="网页上市";
+translations["Portal Signup" ]="门户网站注册";
+translations["Product Listing" ]="产品上市";
+translations["Subdomain Listing" ]="子网域上市";
+translations["Thermometer" ]="温度计";
+
+translations["Public" ]="市民";
+translations["Members only" ]="成员只";
+
+translations["Portal" ]="门户网站";
+translations["Create sub-websites" ]="创建子网站";
+translations["Styles" ]="风格";
+translations["Fonts and colours" ]="字体和颜色";
+translations["Help" ]="帮助";
+translations["Template" ]="范本";
+translations["Change your site look and feel as often as you like" ]="改变您的网站的外观和感觉，因为往往如你所愿";
+translations["View" ]="查看";
+translations["Edit" ]="编辑";
+translations["Copy" ]="复制";
+translations["Site manager" ]="网站管理员";
+translations["Shop manager" ]="店铺经理";
+translations["ComfyPage Help" ]="comfypage帮助";
+translations["Contact a human" ]="联络人";
+translations["Log out" ]="登出";
+translations["Site Manager" ]="网站管理员";
+translations["Account" ]="帐户";
+translations["Login details and transaction history" ]="登录详细信息和交易历史记录";
+translations["Add-ons" ]="加载项";
+translations["Extra website abilities" ]="额外的网站的能力";
+translations["Borders" ]="边界";
+translations["Edit the header, footer, left and right margins" ]="编辑页眉，页脚，左，右边缘";
+translations["Files" ]="档案";
+translations["Manage files and images" ]="管理档案和图片";
+translations["Mailing lists" ]="邮寄名单";
+translations["Send email to visitors" ]="发送电子邮件给游客";
+translations["Trash" ]="垃圾桶";
+translations["Delete" ]="删除";
+translations["Your Pages" ]="您的网页";

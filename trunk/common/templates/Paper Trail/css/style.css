@@ -1,0 +1,21 @@
+#footer_wrapper {
+  background: #4E7DD1 url('../img/menu_bg_bottom.gif') top left repeat-x;
+}
+
+#header_wrapper {
+  background: #4E7DD1 url('../img/menu_bg.gif') bottom left repeat-x;
+  margin:0px; padding:0px;
+}
+
+#header {
+  background: url('../img/header_bg.gif') top right no-repeat;
+  margin:0px;
+  padding:10px;
+}
+
+.featurebox_side {
+  background-color: #fffff6;
+  margin:10px;margin-left:10px;margin-right:10px;margin-bottom:15px;
+  padding:10px;
+  border: 1px solid #DFE8F7;
+}

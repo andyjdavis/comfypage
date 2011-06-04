@@ -159,8 +159,7 @@ COMFYPAGE_ADDRESS: $cwd
 ADMIN_EMAIL: $admin_email
 END;
 
-		Globals::send_email('cameron@affinitysoftware.net', $from, $subject, $message);
-		return Globals::send_email('andrew@affinitysoftware.net', $from, $subject, $message);
+                Globals::send_email_to_admin($subject, $message);
 	}
 	//gets a parameter from GET or POST
 	//if the param value is an array then it is not used

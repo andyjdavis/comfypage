@@ -1,0 +1,135 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	background-image: url(images/Pettern01.jpg);
+	background-repeat: repeat;
+	font-family: 'Trebuchet MS', Helvetica, 'Helvetica Neue', Tahoma, sans-serif;
+	font-size: 12px;
+}
+
+#outdiv {
+	background-image: url(images/hbg.jpg);
+	background-repeat: repeat-x;
+	background-position: top;
+}
+#wrap {
+	width: 702px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#header {
+	positionXX: relative;
+	heightXX: 180px;
+	width: 100%;
+	topXX: 0px;
+	background-image: url(images/Pettern01.jpg);
+	background-repeat: repeat-x;
+	background-position: bottom;
+}
+#underheader {
+	positionXX: relative;
+	height: 100px;
+	width: 100%;
+	topXX: 0px;
+	background-image: url(images/nav.jpg);
+	background-repeat: repeat-x;
+	background-position: bottom;
+}
+.logo {
+	background-image: url(images/Logo.jpg);
+	background-repeat: no-repeat;
+	height: 90px;
+	width: 290px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	display: block;
+}
+
+
+#nav {
+	position: absolute;
+	bottom: 40px;
+	text-align: center;
+	height: 20px;
+	width: 100%;
+	left: 0px;
+}
+#nav ul {
+	list-style-type: none;
+	font-size: 16px;
+	line-height: 20px;
+}
+#nav ul li {
+	display: inline;
+}
+#nav ul li a {
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	margin-right: 20px;
+	margin-left: 20px;
+	text-transform: uppercase;
+}
+#nav ul li a:hover {
+	color: #d8a82d;
+}
+
+#main {
+	background-image: url(images/Pettern02.jpg);
+	background-repeat: repeat;
+	border: 1px solid #515151;
+	text-align: left;
+	padding: 10px;
+	color: #FFFFFF;
+}
+a {
+	color: #cfb429;
+	text-decoration: none;
+}
+
+#outfooter {
+	background-image: url(images/footer1.jpg);
+	background-repeat: repeat-x;
+	background-position: top;
+	text-align: center;
+}
+#footer {
+	width: 702px;
+	margin-right: auto;
+	margin-left: auto;
+	background-image: url(images/footer2.jpg);
+	background-repeat: repeat-x;
+	background-position: top;
+	text-align: right;
+	padding-top: 40px;
+	color: #FFFFFF;
+}
+#footer a {
+	color: #FFFFFF;
+	text-decoration: none;
+	font-weight: bold;
+}
+#footer a:hover {
+	text-decoration: underline;
+}
+h1,h2,h3 {
+	color: #cfb429;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #cfb429;
+	text-transform: uppercase;
+}
+h1 {
+	font-size: 2.2em;
+}
+h2 {
+	font-size: 1.8em;
+}
+h3 {
+	font-size: 1.4em;
+}

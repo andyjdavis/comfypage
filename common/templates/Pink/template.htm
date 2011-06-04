@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title><!--%TITLE%--></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<META http-equiv="Content-Style-Type" content="text/css">
+		<!--%META_DESCRIPTION%-->
+		<link href="common/common.css" rel="stylesheet" type="text/css">
+
+		<!--%JS%-->
+
+		<style TYPE="text/css">
+		<!--
+		%STYLE%
+		a {
+text-decoration:none;
+}
+
+a:active {
+background:#ffffff;
+color:#e50ae2;
+}
+
+a:hover {
+color:black;
+padding-bottom:2px;
+border-bottom:dotted #e50ae2;
+}
+		-->
+		</style>
+		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+		<script type="text/javascript" src="common/lib/jquery/jquery.corner.js" ></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var div = $("#theOuterDiv");
+				div.corner("80px");
+			});
+		</script>
+	</head>
+	<body style="font-family:Verdana, Arial, Helvetica, sans-serif;
+background-color:#ff00fe;
+margin-left:auto;
+margin-right:auto;
+text-align:center;
+padding:0;">
+	<!--%CONTROLS%-->
+	<div style="padding-top:40px;padding-bottom:40px;text-align:center;">
+		<div id="theOuterDiv" style="background:white;width:80%;margin: 0 auto;padding:25px;">
+			<table align=center class=viewing cellspacing=5 cellpadding=5 border=0 style="background:white;width:100%;">
+				<tr>
+					<td colspan=3 class=header><!--%HEADER%--></td>
+				</tr>
+				<tr>
+					<td style='vertical-align : top;' class=leftMargin><!--%LEFT_MARGIN%--></td>
+					<td style='vertical-align : top;' class=centre><!--%CENTRE%--></td>
+					<td style='vertical-align : top;' class=rightMargin><!--%RIGHT_MARGIN%--></td>
+				</tr>
+				<tr>
+					<td colspan=3 class=footer><!--%FOOTER%--></td>
+				</tr>
+			</table>
+			<div class=aff_footer>
+				<p class=aff_footer>
+				<!--%AFFINITY%-->
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

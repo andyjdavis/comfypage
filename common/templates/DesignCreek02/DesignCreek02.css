@@ -1,0 +1,40 @@
+#imageheader
+{ 
+	margin: 0; 
+	width: 800px; 
+	background: url(common/templates/DesignCreek02/head.jpg) no-repeat;  
+	height: 200px; 
+	color: #000000;
+}
+
+#imagefooter { 
+	clear:both;
+	height: 60px;
+	background: url(common/templates/DesignCreek02/footer.jpg) bottom left no-repeat;
+	color: #ffffff; 
+	font-size: 90%; 
+	padding: 0px;
+	margin: 0px 0px 0px 0px; 
+	text-align:center; 
+}
+
+li
+{
+color:#000000;
+	font-weight:bold;
+	text-decoration: none;  
+	padding: 5px 0 1px 5px; 
+
+	border-top: 2px solid #ffffff;
+	border-bottom: 2px solid #ffffff;
+	border-left: 4px solid #40cb25;
+	display: block; 
+	margin-bottom: 2px;
+}
+
+h2
+{
+	margin: 5px 0 5px 0px;
+	padding:0 0 0 20px;
+	background: url(common/templates/DesignCreek02/h2.png) no-repeat;
+}

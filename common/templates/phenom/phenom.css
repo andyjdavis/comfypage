@@ -1,0 +1,28 @@
+a {
+	text-decoration:none;
+}
+a:hover {
+	text-decoration:underline;
+}
+h1{
+	padding-bottom:0.5em;
+	border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color:#B8CDE8;
+}
+h2{
+	padding-bottom:0.5em;
+	border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color:#B8CDE8;
+}
+h3{
+	padding-bottom:0.5em;
+	border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color:#B8CDE8;
+}
+p{
+	font-size: 60%;
+	line-height: 2em;
+}
+ul{
+	font-size:60%;
+	color:#666666;
+	line-height: 2em;
+	list-style: none;
+}

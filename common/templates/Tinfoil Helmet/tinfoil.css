@@ -1,0 +1,158 @@
+/* culture shock: tinfoil by pogy366 - Sept. 2005 */
+
+/******* structure and layout *******/
+body { 
+font-family:"Courier New", Courier, sans-serif;
+font-size: 8pt; 
+color: #000000; 
+background: #ffffff;
+margin:0 0 0 0;
+padding:0 0 0 0;
+background: #ffffff url(images/tinfoil_header.jpg) no-repeat;
+}
+
+.wrap {
+position:relative;
+width:770px;
+margin:175px 0 0 0;
+padding:0 0 0 0;
+text-align:right;
+}
+
+.header {
+position:relative;
+clear:none;
+width:570px;
+height:50px;
+margin:150px 0 0 200px;
+padding:0 0 0 0;
+background:#ffffff;
+color:#000000;
+text-align:right;
+}
+
+.header_title {
+position:absolute;
+clear:both;
+top:0px;
+right:0px;
+width:500px;
+margin:-120px 0 0 0;
+padding:0 0 0 0;
+background:transparent;
+color:#000000;
+text-align:right;
+/*line-height:1em;*/
+}
+
+.leftnav {
+position:relative;
+clear:none;
+width:200px;
+margin:55px 0 0 10px;
+padding:0 0 0 0;
+background:#ffffff;
+color:#000000;
+text-align:left;
+line-height:2em;
+}
+
+.rightarea {
+position:relative;
+float:right;
+clear:none;
+width:535px;
+margin:0 0 0 0;
+padding:0 5px 0 5px;
+border-left: #eeeeee 2px solid;
+background:#ffffff;
+color:#000000;
+text-align:left;
+font-size:9pt;
+}
+
+/******* fonts and links *******/
+a {
+color:#F0A434;
+text-decoration:none;
+background:#ffffff;
+}
+
+a:hover {
+color:#F0A434;
+text-decoration:underline;
+background:#ffffff;
+line-height:1em;
+}
+
+#over a {
+color:#818181;
+text-decoration:overline;
+background:#ffffff;
+}
+
+#over a:hover {
+color:#F0A434;
+text-decoration:none;
+background:#ffffff;
+}
+
+#grey {
+color:#818181;
+background:#ffffff;
+}
+
+.news_date {
+color:#818181;
+font-weight:bold;
+background:#ffffff;
+}
+
+.rightarea h2 {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:11pt;
+color:#F0A434;
+background:#ffffff;
+}
+
+.leftnav strong {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:9pt;
+color:#000000;
+background:#ffffff;
+}
+
+.pagetitle {
+font-family:Arial, Helvetica, sans-serif;
+font-size:24pt;
+font-weight:bold;
+letter-spacing:.4em;
+color:#F0A434;
+background:transparent;
+}
+
+.pagedescription {
+font-family:Arial, Helvetica, sans-serif;
+font-size:10pt;
+letter-spacing:.2em;
+color:#B48540;
+background:transparent;
+}
+
+
+/******* workarounds and hacks *******/
+.clearfix:after {
+content: "."; 
+display: block; 
+height: 0; 
+clear: both; 
+visibility: hidden;
+}
+
+.clearfix {display: inline-table;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+

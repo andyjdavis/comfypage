@@ -1,0 +1,83 @@
+body
+{
+	margin : 0;
+
+	font-family: "Tahoma MS", Arial, Helvetica, sans-serif;
+	background-image: url(images/backing.jpg);
+	background-repeat: repeat-x;
+	background-color: #FFFFFF;
+	font-size: 11pt;
+	line-height: 15px;
+}
+
+p
+{
+	font-family: "Tahoma MS", Arial, Helvetica, sans-serif;
+	font-size: 11pt;
+	line-height: 20px;
+}
+
+li
+{
+	font-family: "Tahoma MS", Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	line-height: 22px;
+}
+
+table.viewing
+{
+	width : 100%;
+}
+/*
+th.subheading
+{
+	font-weight : normal;
+}
+*/
+div.toolbar
+{
+	/*background-color : #305B7E;*/
+	background-color : white;
+	padding : 5px;
+	border-bottom : solid #BBBBBB 1px;
+	font-family : arial;
+}
+
+
+
+a
+{
+	text-decoration:none;
+}
+/*.admin
+{
+	font-family : arial;
+}*/
+/*
+div.aff_footer
+{
+  text-align : center;
+}*/
+/*
+p.aff_footer
+{
+  font-size : 8pt;
+  font-family : arial;
+}*/
+table.admin_table
+{
+	border:solid #BBBBBB 1px;
+	background-color:#EFEFEF;
+	width:95%;
+	margin:0.5em auto;
+	color:#64503F;
+	font-size: 10pt;
+}
+th
+{
+	/*border-bottom:solid #CCCCCC 1px;)*/
+	text-align:left;
+	padding-bottom:0.3em;
+	color:#C0C0C0;
+	font-size:larger;
+}

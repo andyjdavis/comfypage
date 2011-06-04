@@ -84,7 +84,6 @@ END;
 				<td colspan="2" style="text-align:center;">
 					<p><h2><span id="cong" class=translate_me>Congratulations</span></h2></p>
 					<p><span id="comp1" class=translate_me>Your site is ready and available to anyone, anywhere in the world.</span></p>
-					<p><span id="comp4" class=translate_me>Click <img src="common/images/Help.png" /> anytime to contact Cameron and Andrew, the makers of ComfyPage.</div>
 					<p><span id=noshow class=translate_me><a href="edit.php?content_id=INDEX">Take me to my site</a></span></p>
 					</form>
 				</td>

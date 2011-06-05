@@ -83,8 +83,8 @@ class Page_Listing extends Addon
 			{
 				$classname .= '_curr';
 			}
-			$output .= "<strong><a class='$classname' href='$index_id.htm'>$index_title</a></strong>$menu_seperator";
-			//$output .= "<strong><a class='$classname' href='index.php?content_id=$index_id'>$index_title</a></strong>";
+			$output .= "<strong><a class='$classname' href='index.php?content_id=$index_id'>$index_title</a></strong>$menu_seperator";
+
 			//weve already output the index page remove it from the array to output
 			unset($user_pages[INDEX]);
 			$page_array = $user_pages;

@@ -73,29 +73,47 @@ if($copy_from_id != null)
 $backup = Globals::get_param(BACKUP_URL_PARAM, $_GET);
 if($backup != null)
 {
-	// increase script timeout value
-	ini_set("max_execution_time", 300);
-	// create object
-	$zip = new ZipArchive();
-	// open archive
-	if ($zip->open("site/UserFiles/sitebackup.zip", ZIPARCHIVE::CREATE) !== TRUE) {
-		die ("Could not open archive");
-	}
-	// initialize an iterator
-	// pass it the directory to be processed
-	$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator("site/"));
-	// iterate over the directory
-	// add each file found to the archive
-	foreach ($iterator as $key=>$value) {
-		//ignore . and ..
-		$test = '.';
-		if ( substr_compare($key, $test, -strlen($test), strlen($test)) !== 0 ) {
-			$zip->addFile(realpath($key), $key) or die ("ERROR: Could not add file: $key");
-		}
-	}
-	// close and save archive
-	$zip->close();
-	$success = '<a href="site/UserFiles/sitebackup.zip">Download Backup</a>';
+    require_once('common/file.php');
+
+    //delete any old backup files for security purposes
+    $file_admin = new FileAdmin();
+    if (!$file_admin->folder_does_exist(BACKUP_STORE_DIR)) {
+        $file_admin->mkdir_r(BACKUP_STORE_DIR);
+    }
+    $oldbackups = $file_admin->get_file_list(BACKUP_STORE_DIR, false, true);
+    foreach($oldbackups as $oldbackup) {
+        unlink(BACKUP_STORE_DIR.'/'.$oldbackup);
+    }
+
+    $rand = rand();//include a random number to make it harder for others to guess the URL
+
+    $sitename = $_SERVER['HTTP_HOST'];
+    $datestring = date("Ymd");
+    $newbackupname = BACKUP_STORE_DIR."/{$sitename}{$datestring}_{$rand}.zip";
+
+    // increase script timeout value
+    ini_set("max_execution_time", 300);
+    // create object
+    $zip = new ZipArchive();
+    // open archive
+    if ($zip->open($newbackupname, ZIPARCHIVE::CREATE) !== TRUE) {
+        die ("Could not open archive");
+    }
+    // initialize an iterator
+    // pass it the directory to be processed
+    $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator("site/"));
+    // iterate over the directory
+    // add each file found to the archive
+    foreach ($iterator as $key=>$value) {
+        //ignore . and ..
+        $test = '.';
+        if ( substr_compare($key, $test, -strlen($test), strlen($test)) !== 0 ) {
+            $zip->addFile(realpath($key), $key) or die ("ERROR: Could not add file: $key");
+        }
+    }
+    // close and save archive
+    $zip->close();
+    $success = '<a href="'.$newbackupname.'">Download Backup</a>';
 }
 
 $user_pages = $ps->load_users_pages();
@@ -104,26 +122,26 @@ $index_page = $ps->load_index_page();
 //used to remove chars from strings that will ultimately be html object IDs that wont work.  control characters.
 function MakeSafe($s)
 {
-	return preg_replace("/[^a-zA-Z0-9]/", "", $s);
+    return preg_replace("/[^a-zA-Z0-9]/", "", $s);
 }
 function GetPageHtmlRow($contentId, $title, $view, $edit, $delete, $function, $purpose = null, $copy = true, $is_private = false)
 {
-	if(empty($title))
-	{
-		$title = '<i>(No title)</i>';
-	}
-	if(strlen($title) > 40)
-	{
-		$title = substr($title, 0, 40).'...';
-	}
-	$del = null;
-	if($delete)
-	{
-		$del = '<a href=admin.php?' . DELETE_PAGE_URL_PARAM . '=' . $contentId. '><span id="delete_'.$contentId.'" class="translate_me">Delete</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-	}
-	$content_id_param = CONTENT_ID_URL_PARAM;
-	$copy_param = COPY_PAGE_URL_PARAM;
-	echo <<<END
+    if(empty($title))
+    {
+        $title = '<i>(No title)</i>';
+    }
+    if(strlen($title) > 40)
+    {
+        $title = substr($title, 0, 40).'...';
+    }
+    $del = null;
+    if($delete)
+    {
+        $del = '<a href=admin.php?' . DELETE_PAGE_URL_PARAM . '=' . $contentId. '><span id="delete_'.$contentId.'" class="translate_me">Delete</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+    }
+    $content_id_param = CONTENT_ID_URL_PARAM;
+    $copy_param = COPY_PAGE_URL_PARAM;
+    echo <<<END
 <tr>
 	<td nowrap style="font-weight:bold;">$title</td>
 	<td>
@@ -137,7 +155,7 @@ END;
 }
 function GetOptionRow($link, $name, $description, $help=null)
 {
-	GetOption($link, $name, $description, $help, false);
+    GetOption($link, $name, $description, $help, false);
 }
 function GetOption($link, $name, $description, $help=null, $add_break=true)
 {

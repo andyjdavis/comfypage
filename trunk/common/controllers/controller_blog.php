@@ -118,7 +118,7 @@ class controller_blog
 			{
 				$classname_to_use .= '_curr';
 			}
-			$output .= "$menu_seperator<a class='$classname_to_use' href='$content_id.htm'>$content_title</a> $content_modified";
+			$output .= "$menu_seperator<a class='$classname_to_use' href='index.php?content_id=$content_id'>$content_title</a> $content_modified";
 			if($include_content)
 			{
 				$output .= $content[RAW_CONTENT];

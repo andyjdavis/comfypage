@@ -29,6 +29,8 @@ require_once('common/utils/Load.php');
 Globals::dont_cache();
 Login::logged_in();
 
+define('BACKUP_STORE_DIR','site/UserFiles/backups');
+
 define('DELETE_PAGE_URL_PARAM', 'delete');
 define('CREATE_PAGE_URL_PARAM', 'create');
 define('COPY_PAGE_URL_PARAM', 'copy');

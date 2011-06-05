@@ -201,7 +201,7 @@ function CreateRSS($fp, $siteId)
             {
                     $item = new RSSItem();
                     $item->title = $pages[$i]->get(CONTENT_TITLE);
-                    $item->link  = 'http://'.$siteId.'/'.$pages[$i]->id.'.htm';
+                    $item->link  = 'http://'.$siteId.'/index.php?content_id='.$pages[$i]->id;
                     $item->setPubDate($pages[$i]->get(LAST_MODIFIED));
 
                     $page_html = html_entity_decode(str_replace('&nbsp;', ' ', $pages[$i]->get(RAW_CONTENT)));

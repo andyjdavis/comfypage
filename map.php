@@ -102,7 +102,7 @@ END;
 				$dFormatted = date("Y-m-d", $ts);
 				$s .= <<<END
 <url>
-      <loc>http://$siteId/$page->id.htm</loc>
+      <loc>http://$siteId/index.php?content_id={$page->id}</loc>
       <lastmod>$dFormatted</lastmod>
       <changefreq>weekly</changefreq>
 </url>

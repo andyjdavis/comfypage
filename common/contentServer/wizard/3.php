@@ -84,12 +84,7 @@ if($_POST) {
 					$new_page = $ps->create();
 					$new_page->set(CONTENT_TITLE,$itemsDisplay[$i]);
 					$new_page->set(RAW_CONTENT,$content[$i]);
-					/*if(is_dept_sport_site() && $itemsDisplay[$i] == 'Contact')
-					{
-						$new_page->set(CONTENT_DOODAD,'Contact Us Form');
-					}*/
 					$new_page->commit();
-					//echo("creating $itemsDisplay[$i]<br>");
 				}
 				else {
 					//echo("$itemsDisplay[$i] already exists<br>");
@@ -200,8 +195,8 @@ if($_POST) {
 				$disabled = '';
 				for($i = 1; $i<count($itemsDisplay); $i++)
 				{
-					//if is sport and rec site and this is the Contact item
-					if(/*is_dept_sport_site() &&*/ $itemsDisplay[$i] == 'Contact')
+					//if this is the Contact item
+					if($itemsDisplay[$i] == 'Contact')
 					{
 						$disabled = 'disabled';
 					}else{

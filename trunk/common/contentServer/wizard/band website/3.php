@@ -156,12 +156,6 @@ if($_GET)
 					$page = $ps->create();
 					$page->set(CONTENT_TITLE,$new_page_title);
 					$page->set(RAW_CONTENT,$content[$i]);
-					/*TODO What happened to this function? What replaces it?
-					 * if(is_dept_sport_site() && $itemsDisplay[$i] == 'Contact')
-					{
-						//SetFunctionForContent($contentId, 'Contact Us Form');
-						$page->set(CONTENT_DOODAD,'Contact Us Form');
-					}*/
 				}
 			}
 		}
@@ -268,15 +262,7 @@ if($_GET)
 				echo('<tr><td width=45% align=right><INPUT checked TYPE=CHECKBOX disabled NAME="'.$itemsValue[0].'"></td><td align=left>'.$itemsDisplay[0].'</td></tr>');
 				for($i = 1; $i<count($itemsDisplay); $i++)
 				{		
-					//if is sport and rec site and this is the Contact item
-					/*TODO Where did the sport and rec function go? What is happening with them?
-					 * if(is_dept_sport_site() && $itemsDisplay[$i] == 'Contact')
-					{
-						//hide the input because we want to force it on them
-						echo('<tr><td align=right><INPUT checked TYPE=hidden NAME="'.$itemsValue[$i].'"></td><td align=left></td></tr>');
-					}else{*/
-						echo('<tr><td align=right><INPUT checked TYPE=CHECKBOX NAME="'.$itemsValue[$i].'"></td><td align=left>'.$itemsDisplay[$i].'</td></tr>');
-					//}
+                                    echo('<tr><td align=right><INPUT checked TYPE=CHECKBOX NAME="'.$itemsValue[$i].'"></td><td align=left>'.$itemsDisplay[$i].'</td></tr>');
 				}		
 			?>
 			<tr>
